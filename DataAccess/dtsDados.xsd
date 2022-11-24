@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="dtsDados" targetNamespace="http://tempuri.org/dtsDados.xsd" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns="http://tempuri.org/dtsDados.xsd" xmlns:mstns="http://tempuri.org/dtsDados.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+	<xs:element name="dtsDados" msdata:IsDataSet="true">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="GLOBAL_NAME">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="GLOBAL_NAME" type="xs:string" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="USER_TAB_COLUMNS">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="TABLE_NAME" type="xs:string" />
+							<xs:element name="COLUMN_NAME" type="xs:string" />
+							<xs:element name="DATA_TYPE" type="xs:string" minOccurs="0" />
+							<xs:element name="DATA_TYPE_MOD" type="xs:string" minOccurs="0" />
+							<xs:element name="DATA_TYPE_OWNER" type="xs:string" minOccurs="0" />
+							<xs:element name="DATA_LENGTH" type="xs:double" />
+							<xs:element name="DATA_PRECISION" type="xs:double" minOccurs="0" />
+							<xs:element name="DATA_SCALE" type="xs:double" minOccurs="0" />
+							<xs:element name="NULLABLE" type="xs:string" minOccurs="0" />
+							<xs:element name="COLUMN_ID" type="xs:decimal" minOccurs="0" />
+							<xs:element name="DEFAULT_LENGTH" type="xs:double" minOccurs="0" />
+							<xs:element name="DATA_DEFAULT" type="xs:string" minOccurs="0" />
+							<xs:element name="NUM_DISTINCT" type="xs:double" minOccurs="0" />
+							<xs:element name="LOW_VALUE" type="xs:base64Binary" minOccurs="0" />
+							<xs:element name="HIGH_VALUE" type="xs:base64Binary" minOccurs="0" />
+							<xs:element name="DENSITY" type="xs:double" minOccurs="0" />
+							<xs:element name="NUM_NULLS" type="xs:double" minOccurs="0" />
+							<xs:element name="NUM_BUCKETS" type="xs:decimal" minOccurs="0" />
+							<xs:element name="LAST_ANALYZED" type="xs:dateTime" minOccurs="0" />
+							<xs:element name="SAMPLE_SIZE" type="xs:double" minOccurs="0" />
+							<xs:element name="CHARACTER_SET_NAME" type="xs:string" minOccurs="0" />
+							<xs:element name="CHAR_COL_DECL_LENGTH" type="xs:decimal" minOccurs="0" />
+							<xs:element name="GLOBAL_STATS" type="xs:string" minOccurs="0" />
+							<xs:element name="USER_STATS" type="xs:string" minOccurs="0" />
+							<xs:element name="AVG_COL_LEN" type="xs:double" minOccurs="0" />
+							<xs:element name="CHAR_LENGTH" type="xs:double" minOccurs="0" />
+							<xs:element name="CHAR_USED" type="xs:string" minOccurs="0" />
+							<xs:element name="V80_FMT_IMAGE" type="xs:string" minOccurs="0" />
+							<xs:element name="DATA_UPGRADED" type="xs:string" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="USER_TABLES">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="TABLE_NAME" type="xs:string" />
+							<xs:element name="TABLESPACE_NAME" type="xs:string" minOccurs="0" />
+							<xs:element name="CLUSTER_NAME" type="xs:string" minOccurs="0" />
+							<xs:element name="IOT_NAME" type="xs:string" minOccurs="0" />
+							<xs:element name="PCT_FREE" type="xs:decimal" minOccurs="0" />
+							<xs:element name="PCT_USED" type="xs:decimal" minOccurs="0" />
+							<xs:element name="INI_TRANS" type="xs:decimal" minOccurs="0" />
+							<xs:element name="MAX_TRANS" type="xs:decimal" minOccurs="0" />
+							<xs:element name="INITIAL_EXTENT" type="xs:decimal" minOccurs="0" />
+							<xs:element name="NEXT_EXTENT" type="xs:decimal" minOccurs="0" />
+							<xs:element name="MIN_EXTENTS" type="xs:double" minOccurs="0" />
+							<xs:element name="MAX_EXTENTS" type="xs:double" minOccurs="0" />
+							<xs:element name="PCT_INCREASE" type="xs:decimal" minOccurs="0" />
+							<xs:element name="FREELISTS" type="xs:decimal" minOccurs="0" />
+							<xs:element name="FREELIST_GROUPS" type="xs:decimal" minOccurs="0" />
+							<xs:element name="LOGGING" type="xs:string" minOccurs="0" />
+							<xs:element name="BACKED_UP" type="xs:string" minOccurs="0" />
+							<xs:element name="NUM_ROWS" type="xs:double" minOccurs="0" />
+							<xs:element name="BLOCKS" type="xs:decimal" minOccurs="0" />
+							<xs:element name="EMPTY_BLOCKS" type="xs:decimal" minOccurs="0" />
+							<xs:element name="AVG_SPACE" type="xs:decimal" minOccurs="0" />
+							<xs:element name="CHAIN_CNT" type="xs:double" minOccurs="0" />
+							<xs:element name="AVG_ROW_LEN" type="xs:double" minOccurs="0" />
+							<xs:element name="AVG_SPACE_FREELIST_BLOCKS" type="xs:double" minOccurs="0" />
+							<xs:element name="NUM_FREELIST_BLOCKS" type="xs:decimal" minOccurs="0" />
+							<xs:element name="DEGREE" type="xs:string" minOccurs="0" />
+							<xs:element name="INSTANCES" type="xs:string" minOccurs="0" />
+							<xs:element name="CACHE" type="xs:string" minOccurs="0" />
+							<xs:element name="TABLE_LOCK" type="xs:string" minOccurs="0" />
+							<xs:element name="SAMPLE_SIZE" type="xs:double" minOccurs="0" />
+							<xs:element name="LAST_ANALYZED" type="xs:dateTime" minOccurs="0" />
+							<xs:element name="PARTITIONED" type="xs:string" minOccurs="0" />
+							<xs:element name="IOT_TYPE" type="xs:string" minOccurs="0" />
+							<xs:element name="TEMPORARY" type="xs:string" minOccurs="0" />
+							<xs:element name="SECONDARY" type="xs:string" minOccurs="0" />
+							<xs:element name="NESTED" type="xs:string" minOccurs="0" />
+							<xs:element name="BUFFER_POOL" type="xs:string" minOccurs="0" />
+							<xs:element name="ROW_MOVEMENT" type="xs:string" minOccurs="0" />
+							<xs:element name="GLOBAL_STATS" type="xs:string" minOccurs="0" />
+							<xs:element name="USER_STATS" type="xs:string" minOccurs="0" />
+							<xs:element name="DURATION" type="xs:string" minOccurs="0" />
+							<xs:element name="SKIP_CORRUPT" type="xs:string" minOccurs="0" />
+							<xs:element name="MONITORING" type="xs:string" minOccurs="0" />
+							<xs:element name="CLUSTER_OWNER" type="xs:string" minOccurs="0" />
+							<xs:element name="DEPENDENCIES" type="xs:string" minOccurs="0" />
+							<xs:element name="COMPRESSION" type="xs:string" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

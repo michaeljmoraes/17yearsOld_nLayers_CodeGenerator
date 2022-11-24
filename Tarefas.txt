@@ -1,0 +1,20 @@
+Tarefas a serem realizadas para conclusao do Code Generator
+
+
+1 - Funcionalidades
+	1.1 - Acertar o tipo de Dados para os parametros, tanto da procedures quanto das views e tabelas
+
+	1.2 - Criacao de arquivo XML para login, e configurações de saida
+
+	1.2 - Remover o ponto vazia das procedures sem package do treeview. OK
+
+
+2 - Navegabilidade
+	2.1 - Validacao dos treeviews
+
+	2.3 - Hailitar desabilitar opcoes de objetos conforme a selecao dos objetos OK
+
+	2.4 - Melhorar a transferencia de nodes de um lado para o outro.
+
+	2.5 - Mostrar mensagem amigal conforme Pagina o usuario passar o mouse, ou estiver atualmente. OK
+

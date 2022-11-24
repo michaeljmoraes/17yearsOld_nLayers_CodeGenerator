@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypedHashtableProvider", "TypedHashtableProvider.csproj", "{F09A584D-29C7-45E0-AE52-D81D5CD18051}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{F09A584D-29C7-45E0-AE52-D81D5CD18051}.Debug.ActiveCfg = Debug|.NET
+		{F09A584D-29C7-45E0-AE52-D81D5CD18051}.Debug.Build.0 = Debug|.NET
+		{F09A584D-29C7-45E0-AE52-D81D5CD18051}.Release.ActiveCfg = Release|.NET
+		{F09A584D-29C7-45E0-AE52-D81D5CD18051}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

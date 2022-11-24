@@ -1,0 +1,84 @@
+
+<h1>TextBox</h1>
+<p>TextBox is a ASP-like script host that will process any file you give it looking
+for: </p>
+<ul>
+<li>text blocks
+<li>script blocks (&lt;% script %&gt;)
+<li>output blocks (&lt;%= output %&gt;)
+<li>An optional language block as the first line in the file <i>only</i> (&lt;%@ language= language %&gt;)<br>
+(TextBox defaults to vbscript and currently only works with vbscript and jscript).</ul>
+
+<p>TextBox pre-processes the text to turn the whole thing
+into into script and hands it to the scripting engine for execution,
+outputting the result to standard out. Whatever features of the scripting language
+you want to use, feel free. </p>
+
+<h1>Usage</h1>
+<p>To provide for I/O, TextBox emulates ASP somewhat. It provides two intrinsics,
+the request object and the response object. The Request object has a
+single property, QueryString, that works just like ASP. The Response object
+has a single property, Write, just like ASP. In fact, if you only use 
+Request.QueryString and Response.Write, you should be able to test your
+script files using ASP. </p>
+<p>
+To set name/value pairs for use by the script via the Request object, the usage of TextBox is like so:
+
+    <pre>    usage: textbox &lt;file&gt; [name=value]</pre>
+
+<p>For example, to interpret the file above, any of the following command lines would work:
+</p>
+
+    <pre>    textbox test.cpp.asp
+    textbox test.cpp.asp greeting=&quot;Double Wahoo!&quot;
+    textbox test.cpp.asp iostream=true greeting=&quot;Double Wahoo!&quot;
+    </pre>
+
+<p>The first would yield the following output: </p>
+
+    <pre>    // test.cpp
+
+    #include &lt;stdio.h&gt;
+
+    int main()
+    {
+        printf(&quot;Hello, World.\n&quot;);
+        return 0;
+    }
+    </pre>
+
+    <p>while the last would yield the following: </p>
+
+    <pre>    // test.cpp
+
+    #include &lt;iostream&gt;
+    using namespace std;
+
+    int main()
+    {
+        cout &lt;&lt; &quot;Double Wahoo!&quot; &lt;&lt; endl;
+        return 0;
+    }
+    </pre>
+
+<h1>Errors and Debugging</h1>
+<p>If the scripting engine finds an error, it will notify TextBox, who will notify
+you. However, if you've got script debugging enabled on your machine, the
+scripting engine will ask you if you'd like to fire up the debugger, showing
+you exactly the offending code. </p>
+
+<h1>Not Just Code</h1>
+<p>Of course, TextBox is good for the generation of any text, not just code. </p>
+
+<h1>Download</h1>
+<p>TextBox is available for 
+<a href="http://www.sellsbrothers.com/tools/textbox/textbox.zip">download</a>. It's just a
+prototype,
+so please adjust your expectations accordingly. If you have any comments, please send them to
+<a href=mailto:csells@sellsbrothers.com?subject=TextBox>csells@sellsbrothers.com</a>.
+</p>
+
+<h1>Copyright</h1>
+<p>Copyright (c) 1998-2001, Chris Sells All rights reserved.
+NO WARRANTIES EXTENDED. Use at your own risk. </p>
+

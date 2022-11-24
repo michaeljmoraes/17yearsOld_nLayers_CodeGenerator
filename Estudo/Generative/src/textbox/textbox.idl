@@ -1,0 +1,55 @@
+// textbox.idl
+
+import "unknwn.idl";
+
+[
+	object,
+	uuid(0722AE71-6F84-11D2-9870-00600823CFFB),
+	dual,
+	helpstring("IRequest Interface"),
+	pointer_default(unique)
+]
+interface IRequest : IDispatch
+{
+    [propget] HRESULT QueryString([in] BSTR bstrName, [out, retval] BSTR* pbstrValue);
+}
+
+[
+	object,
+	uuid(0722AE72-6F84-11D2-9870-00600823CFFB),
+	dual,
+	helpstring("IResponse Interface"),
+	pointer_default(unique)
+]
+interface IResponse : IDispatch
+{
+    HRESULT Write([in] BSTR bstr);
+}
+
+[
+	uuid(0722AE73-6F84-11D2-9870-00600823CFFB),
+	version(1.0),
+	helpstring("TextBox 1.0 Type Library")
+]
+library TEXTBOXLib
+{
+	importlib("stdole32.tlb");
+
+	[
+		uuid(0722AE74-6F84-11D2-9870-00600823CFFB),
+		helpstring("Request Class")
+	]
+	coclass Request
+	{
+		[default] interface IRequest;
+	};
+
+    [
+		uuid(0722AE75-6F84-11D2-9870-00600823CFFB),
+		helpstring("Response Class")
+	]
+	coclass Response
+	{
+		[default] interface IResponse;
+	};
+};

@@ -1,0 +1,11 @@
+<%
+    dim now: now = Date
+%>
+// hello.cpp: generated <%= now %>
+
+#include <stdio.h>
+
+void main()
+{
+    printf("<%= Request.QueryString("greeting") %>\n");
+}

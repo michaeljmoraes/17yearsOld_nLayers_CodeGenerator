@@ -67,18 +67,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CrystalDecisions.CrystalReports.Engine">
-      <Name>crystaldecisions.crystalreports.engine</Name>
-      <HintPath>..\..\..\windows\assembly\gac\crystaldecisions.crystalreports.engine\9.1.3300.0__692fbea5521e1304\crystaldecisions.crystalreports.engine.dll</HintPath>
-    </Reference>
-    <Reference Include="CrystalDecisions.ReportSource">
-      <Name>crystaldecisions.reportsource</Name>
-      <HintPath>..\..\..\windows\assembly\gac\crystaldecisions.reportsource\9.1.3300.0__692fbea5521e1304\crystaldecisions.reportsource.dll</HintPath>
-    </Reference>
-    <Reference Include="CrystalDecisions.Shared">
-      <Name>crystaldecisions.shared</Name>
-      <HintPath>..\..\..\windows\assembly\gac\crystaldecisions.shared\9.1.3300.0__692fbea5521e1304\crystaldecisions.shared.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.7.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -100,6 +88,7 @@
     <Reference Include="System.Collections.Immutable, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Collections.Immutable.7.0.0\lib\net462\System.Collections.Immutable.dll</HintPath>
     </Reference>
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install">
       <Name>System.Configuration.Install</Name>
     </Reference>
@@ -166,18 +155,25 @@
     <Compile Include="Classes\Code.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Classes\GeraArquivo.cs">
+    <Compile Include="TemplateHelper\Assets\Application\AppAutoMapperDomainToViewModelGenerator .cs" />
+    <Compile Include="TemplateHelper\Assets\Application\AppAutoMapperViewToDomainModelGenerator.cs" />
+    <Compile Include="TemplateHelper\Assets\Application\AppDomainServiceInterfaceGenerator.cs" />
+    <Compile Include="TemplateHelper\Assets\Application\AppDomainServiceImplementationGenerator.cs" />
+    <Compile Include="TemplateHelper\Assets\Application\AppViewModelGenerator.cs" />
+    <Compile Include="TemplateHelper\Assets\DataBase\DataBaseStoredProceduresGenerator.cs" />
+    <Compile Include="TemplateHelper\Assets\DataBase\DataBaseFunctionsGenerator.cs" />
+    <Compile Include="TemplateHelper\Assets\Data\DataQueryRepostiroyGenerator.cs" />
+    <Compile Include="TemplateHelper\Assets\Data\DataCommandsRepostiroyGenerator.cs" />
+    <Compile Include="TemplateHelper\Assets\Domain\DomainRepositoryCommandInterfaceGenerator.cs" />
+    <Compile Include="TemplateHelper\Assets\Domain\DomainRepositoryQueryInterfaceGenerator.cs" />
+    <Compile Include="TemplateHelper\Assets\WebApi\WebApiDependencyInjectionGenerator.cs" />
+    <Compile Include="TemplateHelper\Assets\WebApi\WebApiControllerGenerator.cs" />
+    <Compile Include="TemplateHelper\Base\FileGeneratorBase.cs" />
+    <Compile Include="TemplateHelper\Base\IFileGenerator.cs" />
+    <Compile Include="TemplateHelper\FileGeneratorHelper.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Classes\GeraArquivoBC.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Classes\GeraArquivoEORO.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Classes\GeraArquivoMapper.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="TemplateHelper\Assets\Domain\DomainModelGenerator.cs" />
     <Compile Include="DataAccess\DataAccess.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -186,9 +182,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dtsDados.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Estrutura\Configuracao.cs">
+    <Compile Include="Estrutura\CustomConfiguration.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Formularios\frmOpcoes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,11 +195,25 @@
     <Compile Include="frmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Content Include="Templates\11Domain.Model.cs.txt" />
+    <Content Include="Templates\12Domain.Repository.Domain.IDomainCommandsRepository.cs.txt" />
+    <Content Include="Templates\12Domain.Repository.Domain.IDomainQueryRepository.cs.txt" />
+    <Content Include="Templates\22Data.Repository.DomainCommandsRepository.cs.txt" />
+    <Content Include="Templates\22Data.Repository.DomainQueryRepository.cs.txt" />
+    <Content Include="Templates\31Application.ViewModels.DomainViewModel.cs.txt" />
+    <Content Include="Templates\32Application.Services.DomainApplicationService.cs.txt" />
+    <Content Include="Templates\32Application.Services.IDomainApplicationService.cs.txt" />
+    <Content Include="Templates\34Application.DomainToViewModel.cs.txt" />
+    <Content Include="Templates\33Application.ViewModelToDomain.cs.txt" />
+    <Content Include="Templates\42WebApi.DependencyInjection.cs.txt" />
+    <Content Include="Templates\41WebApi.Controllers.DomainController.cs.txt" />
     <Content Include="App.ico" />
     <Content Include="DataAccess\dtsDados.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>dtsDados.Designer.cs</LastGenOutput>
     </Content>
+    <Content Include="Templates\fns_Domain.sql" />
+    <Content Include="Templates\sps_Domain.sql" />
     <EmbeddedResource Include="Formularios\frmOpcoes.resx">
       <DependentUpon>frmOpcoes.cs</DependentUpon>
     </EmbeddedResource>
@@ -213,11 +224,18 @@
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="DataAccess\dtsDados.xsc">
+      <DependentUpon>dtsDados.xsd</DependentUpon>
+    </None>
+    <None Include="DataAccess\dtsDados.xss">
+      <DependentUpon>dtsDados.xsd</DependentUpon>
+    </None>
     <None Include="DataAccess\dtsDados.xsx">
       <DependentUpon>dtsDados.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent />

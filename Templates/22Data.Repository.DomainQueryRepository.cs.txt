@@ -1,0 +1,80 @@
+﻿using Core.Data;
+using Core.DomainObjects;
+using Data.Extensions;
+using Data.Repository.Base;
+using Domain.Models;
+using Domain.Repository;
+using Domain.Repository.Base;
+using Domain.Repository.User;
+using Npgsql;
+
+namespace Data.Repository
+{
+    public class {DomainModel}QueryRepository : BaseQueryRepository<{DomainModel}>, I{DomainModel}QueryRepository
+    {
+        public {DomainModel}QueryRepository(IDatabaseContext databaseContext) : base(databaseContext) { }
+
+        async Task<{DomainModel}?> IQueryRepository<{DomainModel}>.GetAsync(int id)
+        {
+            string spName = $"select * from fn_get_{sp_domain}({id})";
+            return await base.GetAsync(spName);
+        }
+
+        async Task<IEnumerable<{DomainModel}>?> IQueryRepository<{DomainModel}>.GetAllAsync()
+        {
+            string spName = "select * from fn_get_all_{sp_domain}()";
+            return await base.GetAllAsync(spName);
+        }
+
+
+        /// <summary>
+        /// Maps data for populate by key statement
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <returns></returns>
+        protected override async Task<{DomainModel}?> Map(NpgsqlDataReader reader)
+        {
+            {DomainModel} resulData = new {DomainModel}();
+            if(!reader.HasRows) return null;
+            if (reader.HasRows)
+            {
+                while (await reader.ReadAsync())
+                {
+                    resulData = new {DomainModel}(
+                        id: Convert.ToInt32(reader["id"].ToString()),
+                        {map_parameters}
+                        createdAt: Convert.ToDateTime(reader["created_at"]),
+                        updatedAt: Convert.ToDateTime(reader["updated_at"]));
+                }
+                await reader.CloseAsync();
+            }
+            return resulData;
+        }
+
+        /// <summary>
+        /// Maps data for populate all statement
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <returns></returns>
+        protected override async Task<IEnumerable<{DomainModel}>?> Maps(NpgsqlDataReader reader)
+        {
+            List<{DomainModel}>? entities = new List<{DomainModel}>();
+            if (!reader.HasRows) return null;
+            if (reader.HasRows)
+            {
+                while (await reader.ReadAsync())
+                {
+                    {DomainModel} entity = new {DomainModel}(
+                        id: Convert.ToInt32(reader["id"].ToString()),
+                        {maps_parameters}
+                        createdAt: Convert.ToDateTime(reader["created_at"]),
+                        updatedAt: Convert.ToDateTime(reader["updated_at"]));
+
+                    entities.Add(entity);
+                }
+                await reader.CloseAsync();
+            }
+            return entities;
+        }
+    }
+}

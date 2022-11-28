@@ -1,0 +1,4 @@
+﻿//---  {DomainModel} -----
+services.AddScoped<I{DomainModel}CommandsRepository, {DomainModel}CommandsRepository>();
+services.AddScoped<I{DomainModel}QueryRepository, {DomainModel}QueryRepository>();
+services.AddScoped<I{DomainModel}ApplicationService, {DomainModel}ApplicationService>();

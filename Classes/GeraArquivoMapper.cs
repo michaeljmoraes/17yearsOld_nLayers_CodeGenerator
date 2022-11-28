@@ -14,7 +14,7 @@ using System.Data;
 namespace Procwork.CodeGenerator.Classes
 {
 
-	public class GeraArquivoMapper: GeraArquivo
+	public class GeraArquivoMapper: FileGenerator
 	{
 		
 		public TreeNode trnProcedureSelect;
@@ -102,10 +102,10 @@ namespace " + this.Namespace + @"
 		{
 			string strCampos = "" + (char)13;
 
-			foreach(TreeNode campo in this.ColecaoNodes.Nodes)
-			{
-				strCampos += "			objEO." + this.AcertarNomeCampo(campo) + (char)13;
-			}
+			//foreach(TreeNode campo in this.ColecaoNodes.Nodes)
+			//{
+			//	strCampos += "			objEO." + this.AcertarNomeCampo(campo) + (char)13;
+			//}
 			
 			return strCampos;
 		}
@@ -148,15 +148,15 @@ namespace " + this.Namespace + @"
 		{
 		
 			string strQuery = "";
-			strQuery = "				SELECT " + (char)13;
-			foreach(TreeNode campo in this.ColecaoNodes.Nodes)
-			{
-				strQuery += "						" + campo.Text  + ", " + (char)13;
-			}
+			//strQuery = "				SELECT " + (char)13;
+			//foreach(TreeNode campo in this.ColecaoNodes.Nodes)
+			//{
+			//	strQuery += "						" + campo.Text  + ", " + (char)13;
+			//}
 			
-			strQuery = strQuery.Remove(strQuery.Length-3,3) + (char)13;
+			//strQuery = strQuery.Remove(strQuery.Length-3,3) + (char)13;
 			
-			strQuery += "				 FROM " + this.ColecaoNodes.Text;
+			//strQuery += "				 FROM " + this.ColecaoNodes.Text;
 
 			return strQuery;
 

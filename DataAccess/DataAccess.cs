@@ -3,6 +3,7 @@ using System.Data.OleDb;
 using System.Data;
 using Procwork.CodeGenerator;
 using Npgsql;
+using System.Configuration;
 
 namespace Procwork.Data
 {
@@ -17,15 +18,15 @@ namespace Procwork.Data
 
 		public string GetConnectionString()
 		{
-			Configuracao configuracao = new Configuracao();
-			
+			//CodeGenerator.Configuration configuracao = new CodeGenerator.Configuration();
+
 			//string strUsuario = configuracao.ObterParametroDoXML("usuario");
 			//string strSenha = configuracao.ObterParametroDoXML("senha");
 			//string strInstancia = configuracao.ObterParametroDoXML("instancia");
-			
-			string strSQLConnetionstring = "Host=localhost;Username=postgres;Password=cyber2010!;Database=dbdocstorage01;Port=5433;Pooling=true;SearchPath=public;IncludeErrorDetails=true";
 
-            return strSQLConnetionstring;
+			string strConnetionstring = CustomConfiguration.GetConnectionString();
+
+            return strConnetionstring;
 		}
 
 		public NpgsqlConnection GetConnection(string stringConexao_)

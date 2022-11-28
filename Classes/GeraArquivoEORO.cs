@@ -14,7 +14,7 @@ using System.Data;
 namespace Procwork.CodeGenerator.Classes
 {
 
-	public class GeraArquivoEORO: GeraArquivo
+	public class GeraArquivoEORO: FileGenerator
 	{
 		
 		// Tipo de objeto a ser usado EO ou RO
@@ -91,30 +91,30 @@ namespace " + this.Namespace + @"
 			}
 		}
 
-		public string ScriptCampos(enuTipoCampo tipocampo_)
-		{
+		//public string ScriptCampos(enuTipoCampo tipocampo_)
+		//{
 
-			string strCampos = "" + (char)13;
+		//	string strCampos = "" + (char)13;
 
-			foreach(TreeNode campo in this.ColecaoNodes.Nodes)
-			{
-				if(tipocampo_ == enuTipoCampo.PropriedadesPrivadasEORO)
-				{
-					strCampos += "		" + this.AcertarNomeCampoPrivado(campo) + (char)13;
-				}
-				if(tipocampo_ == enuTipoCampo.ConstrutorEORO)
-				{
-					strCampos += "			" + this.AcertarNomeCampoConstrutor(campo) + (char)13;
-				}
-				if(tipocampo_ == enuTipoCampo.AtributosEORO)
-				{
-					strCampos += this.AcertarNomeCampoAtributo(campo) + (char)13;
-				}
+		//	//foreach(TreeNode campo in this.ColecaoNodes.Nodes)
+		//	//{
+		//	//	if(tipocampo_ == enuTipoCampo.PropriedadesPrivadasEORO)
+		//	//	{
+		//	//		strCampos += "		" + this.AcertarNomeCampoPrivado(campo) + (char)13;
+		//	//	}
+		//	//	if(tipocampo_ == enuTipoCampo.ConstrutorEORO)
+		//	//	{
+		//	//		strCampos += "			" + this.AcertarNomeCampoConstrutor(campo) + (char)13;
+		//	//	}
+		//	//	if(tipocampo_ == enuTipoCampo.AtributosEORO)
+		//	//	{
+		//	//		strCampos += this.AcertarNomeCampoAtributo(campo) + (char)13;
+		//	//	}
 
-			}
+		//	//}
 			
-			return strCampos;
-		}
+		//	return strCampos;
+		//}
 
 		private string AcertarNomeCampoPrivado(TreeNode noCampo_)
 		{

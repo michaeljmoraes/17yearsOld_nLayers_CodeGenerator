@@ -1,0 +1,42 @@
+﻿using Core.DomainObjects;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Domain.Models
+{
+    public class {DomainModel} : Entity, IAggregateRoot
+    {
+        {DomainProperties}
+
+        public {DomainModel}() { }
+
+        public {DomainModel}({DomainConstructorUpdateParameters})
+            : this(null, {DomainConstructorUpdateParametersToBase})
+        { }
+
+        public {DomainModel}({DomainConstructorInsertParameters}) 
+        {
+            {DomainSettingProperties}
+            Validate();
+        }
+
+
+        public override string ToString()
+        {
+            return $"";
+        }
+
+        public void Validate()
+        {
+            //Validations.ValidateEmpty(Name, "Name could not be empty");
+            //Validations.ValidateLength(Name, 100, "Name exceeds maximum 100 characters");
+
+            //Validations.ValidateLength(Description ?? "", 300, "Description exceeds maximum 400 characters");
+
+        }
+    }
+}

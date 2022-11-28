@@ -1,0 +1,6 @@
+﻿CreateMap<{DomainModel}ViewModel, {DomainModel}>()
+.ConstructUsing(c => new {DomainModel}
+    (
+        {ViewModelToDomainConstructorParameters}
+    )
+);

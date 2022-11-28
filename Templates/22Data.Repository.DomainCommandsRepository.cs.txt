@@ -1,0 +1,74 @@
+﻿
+using Core.Data;
+using Core.DomainObjects;
+using Data.Repository.Base;
+using Domain.Models;
+using Domain.Repository;
+using Domain.Repository.User;
+using Npgsql;
+using NpgsqlTypes;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Data.Repository
+{
+    public class {DomainModel}CommandsRepository : BaseCommandsRepository<{DomainModel}>, I{DomainModel}CommandsRepository
+    {
+        public {DomainModel}CommandsRepository(IDatabaseContext databaseContext) : base(databaseContext) { }
+
+        public override {DomainModel} Insert({DomainModel} entity)
+        {
+            string spName = "sp_insert_{sp_domain}";
+            return base.Insert(entity, spName);
+        }
+
+        public override {DomainModel} Update({DomainModel} entity)
+        {
+            string spName = "sp_update_{sp_domain}";
+            return base.Update(entity, spName);
+        }
+
+        public override int Delete(int id)
+        {
+            string spName = "sp_delete_{sp_domain}";
+            return base.Delete(id, spName);
+        }
+
+
+
+        /// <summary>
+        /// Passes the parameters for Insert Statement
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="cmd"></param>
+        protected override void InsertCommandParameters({DomainModel} entity, NpgsqlCommand cmd)
+        {
+            {InsertParameters}
+        }
+
+        /// <summary>
+        /// Passes the parameters for Update Statement
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="cmd"></param>
+        protected override void UpdateCommandParameters({DomainModel} entity, NpgsqlCommand cmd)
+        {
+            {UpdateParameters}
+        }
+
+        /// <summary>
+        /// Passes the parameters to command for Delete Statement
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="cmd"></param>
+        protected override void DeleteCommandParameters(int id, NpgsqlCommand cmd)
+        {
+            cmd.Parameters.AddWithValue("_id", id);
+        }
+
+    }
+}

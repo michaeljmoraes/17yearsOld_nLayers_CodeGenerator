@@ -14,7 +14,7 @@ using System.Data;
 namespace Procwork.CodeGenerator.Classes
 {
 
-	public class GeraArquivoBC: GeraArquivo
+	public class DomainModelGenerator: FileGenerator
 	{
 
 //		private string m_campochavebanco = "";
@@ -36,7 +36,7 @@ namespace Procwork.CodeGenerator.Classes
 		public bool GeraMetodoRemover = true;
 		public bool GeraMetodoPersistir = true;
 
-		public GeraArquivoBC()
+		public DomainModelGenerator()
 		{
 		}
 

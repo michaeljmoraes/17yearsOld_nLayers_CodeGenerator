@@ -1,0 +1,121 @@
+﻿using Core.DomainObjects;
+using Application.Wrappers;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Application.Services;
+using Domain.Models;
+using Domain.CoreModels;
+using Domain.Repository.User;
+using Microsoft.Extensions.Hosting;
+using AutoMapper;
+using Domain.Repository;
+
+namespace Application.Services
+{
+    public class {DomainModel}ApplicationService : I{DomainModel}ApplicationService
+    {
+        private readonly I{DomainModel}CommandsRepository _repositoryCommands;
+        private readonly I{DomainModel}QueryRepository _repositoryQueries;
+        private readonly IMapper _mapper;
+
+        public {DomainModel}ApplicationService(IMapper mapper,
+            I{DomainModel}CommandsRepository repositoryCommands,
+            I{DomainModel}QueryRepository repositoryQueries)
+        {
+            _mapper = mapper;
+            _repositoryCommands = repositoryCommands;
+            _repositoryQueries = repositoryQueries;
+        }
+
+
+        public async Task<PageResult<{DomainModel}ViewModel>> GetAsync(int id)
+        {
+            IEnumerable<ModelError> errors = Enumerable.Empty<ModelError>();
+
+            var entity = await _repositoryQueries.GetAsync(id);
+
+            if (entity is null)
+            {
+                return new PageResult<{DomainModel}ViewModel>
+                {
+                    Errors = errors.Append(new ModelError("{DomainModel} not found"))
+                };
+            }
+
+            var entityViewModel = _mapper.Map<{DomainModel}ViewModel>(entity);
+
+            var pageResult = new PageResult<{DomainModel}ViewModel>
+            {
+                Data = entityViewModel
+            };
+
+            return pageResult;
+        }
+
+        public async Task<PagedResult<IEnumerable<{DomainModel}ViewModel>>> GetAllAsync(PageFilter filter)
+        {
+            var data = _mapper.Map<IEnumerable<{DomainModel}ViewModel>>(await _repositoryQueries.GetAllAsync());
+            var totalResult = data.Count();
+            var pagedResult = new PagedResult<IEnumerable<{DomainModel}ViewModel>>(data, totalResult, filter);
+            return pagedResult;
+        }
+
+        public Task<PageResult<{DomainModel}ViewModel>> Insert({DomainModel}ViewModel viewModel)
+        {
+            var pageResult = new PageResult<{DomainModel}ViewModel>(viewModel);
+            {DomainModel} entity;
+            try
+            {
+                entity = _mapper.Map<{DomainModel}>(viewModel);
+                pageResult.Data = _mapper.Map<{DomainModel}ViewModel>(_repositoryCommands.Insert(entity));
+
+            }
+            catch (Exception ex)
+            {
+                pageResult.Errors = pageResult.Errors.Append(new ModelError(ex.Message));
+                return Task.FromResult(pageResult);
+            }
+
+            return Task.FromResult(pageResult);
+        }
+
+        public Task<PageResult<{DomainModel}ViewModel>> Update({DomainModel}ViewModel viewModel)
+        {
+            var pageResult = new PageResult<{DomainModel}ViewModel>(viewModel);
+            {DomainModel} identity;
+            try
+            {
+                identity = _mapper.Map<{DomainModel}>(viewModel);
+                pageResult.Data = _mapper.Map<{DomainModel}ViewModel>(_repositoryCommands.Update(identity));
+            }
+            catch (Exception ex)
+            {
+                pageResult.Errors = pageResult.Errors.Append(new ModelError(ex.Message));
+                return Task.FromResult(pageResult);
+            }
+            return Task.FromResult(pageResult);
+        }
+
+        public Task<PageResult<{DomainModel}ViewModel>> Delete(int id)
+        {
+            var pageResult = new PageResult<{DomainModel}ViewModel>();
+            try
+            {
+                _repositoryCommands.Delete(id);
+            }
+            catch (Exception ex)
+            {
+                pageResult.Errors = pageResult.Errors.Append(new ModelError(ex.Message));
+                return Task.FromResult(pageResult);
+            }
+            return Task.FromResult(pageResult); 
+        }
+
+
+        public void Dispose()
+        {
+            _repositoryCommands.Dispose();
+            _repositoryQueries.Dispose();
+        }
+    }
+}
+

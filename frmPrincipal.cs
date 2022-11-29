@@ -64,9 +64,8 @@ namespace Procwork.CodeGenerator
         private System.Windows.Forms.TreeView trvProcedures;
         private System.Windows.Forms.Panel pnlProcedures;
         private System.Windows.Forms.TabControl tabcPassos;
-        private System.Windows.Forms.TabPage tabpExplorer;
-        private System.Windows.Forms.TabPage tabpObjetos;
-        private System.Windows.Forms.TabPage tabpOpcoes;
+        private System.Windows.Forms.TabPage tabpObjects;
+        private System.Windows.Forms.TabPage tabpOptions;
         private System.Windows.Forms.TabPage tabpProcedures;
         private System.Windows.Forms.TabPage tabpPreview;
         private System.Windows.Forms.TabPage tabpAppConfiguration;
@@ -107,6 +106,7 @@ namespace Procwork.CodeGenerator
         public TextBox txtDIAppendTag;
         private Button cmdGenerateAllFiles;
         private Button cmdGenerateOnlySPsFNs;
+        private TabPage tabpExplorer;
         protected static Data.DataAccess dataAccess = new Data.DataAccess();
 
         public frmPrincipal()
@@ -148,7 +148,9 @@ namespace Procwork.CodeGenerator
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.stbInformacoes = new System.Windows.Forms.StatusBar();
             this.pnlBotoesNavegacao = new System.Windows.Forms.Panel();
+            this.cmdGenerateOnlySPsFNs = new System.Windows.Forms.Button();
             this.cmdPreView = new System.Windows.Forms.Button();
+            this.cmdGenerateAllFiles = new System.Windows.Forms.Button();
             this.cmdGenerateFiles = new System.Windows.Forms.Button();
             this.tabcPassos = new System.Windows.Forms.TabControl();
             this.tabpExplorer = new System.Windows.Forms.TabPage();
@@ -159,7 +161,7 @@ namespace Procwork.CodeGenerator
             this.cmdExcluirNodes = new System.Windows.Forms.Button();
             this.pnlBancoDados = new System.Windows.Forms.Panel();
             this.trvTabelas = new System.Windows.Forms.TreeView();
-            this.tabpObjetos = new System.Windows.Forms.TabPage();
+            this.tabpObjects = new System.Windows.Forms.TabPage();
             this.pnlObjetos = new System.Windows.Forms.Panel();
             this.grpDomains = new System.Windows.Forms.GroupBox();
             this.chkDomainRepositoryInterfaces = new System.Windows.Forms.CheckBox();
@@ -185,7 +187,7 @@ namespace Procwork.CodeGenerator
             this.chkEO = new System.Windows.Forms.CheckBox();
             this.chkMapper = new System.Windows.Forms.CheckBox();
             this.chkBC = new System.Windows.Forms.CheckBox();
-            this.tabpOpcoes = new System.Windows.Forms.TabPage();
+            this.tabpOptions = new System.Windows.Forms.TabPage();
             this.pnlCommands = new System.Windows.Forms.Panel();
             this.grpBC = new System.Windows.Forms.GroupBox();
             this.chkTipoSelect = new System.Windows.Forms.CheckBox();
@@ -230,22 +232,20 @@ namespace Procwork.CodeGenerator
             this.txtBasePath = new System.Windows.Forms.TextBox();
             this.lblBasePath = new System.Windows.Forms.Label();
             this.lblMensagem = new System.Windows.Forms.Label();
-            this.cmdGenerateAllFiles = new System.Windows.Forms.Button();
-            this.cmdGenerateOnlySPsFNs = new System.Windows.Forms.Button();
             this.pnlBotoesNavegacao.SuspendLayout();
             this.tabcPassos.SuspendLayout();
             this.tabpExplorer.SuspendLayout();
             this.pnlCampos.SuspendLayout();
             this.pnlBotoesMovimentacao.SuspendLayout();
             this.pnlBancoDados.SuspendLayout();
-            this.tabpObjetos.SuspendLayout();
+            this.tabpObjects.SuspendLayout();
             this.pnlObjetos.SuspendLayout();
             this.grpDomains.SuspendLayout();
             this.grpApplication.SuspendLayout();
             this.grpData.SuspendLayout();
             this.grpDataBase.SuspendLayout();
             this.grpWebApi.SuspendLayout();
-            this.tabpOpcoes.SuspendLayout();
+            this.tabpOptions.SuspendLayout();
             this.pnlCommands.SuspendLayout();
             this.grpBC.SuspendLayout();
             this.grpMapper.SuspendLayout();
@@ -295,29 +295,48 @@ namespace Procwork.CodeGenerator
             this.pnlBotoesNavegacao.Size = new System.Drawing.Size(1073, 46);
             this.pnlBotoesNavegacao.TabIndex = 5;
             // 
+            // cmdGenerateOnlySPsFNs
+            // 
+            this.cmdGenerateOnlySPsFNs.Location = new System.Drawing.Point(251, 9);
+            this.cmdGenerateOnlySPsFNs.Name = "cmdGenerateOnlySPsFNs";
+            this.cmdGenerateOnlySPsFNs.Size = new System.Drawing.Size(244, 27);
+            this.cmdGenerateOnlySPsFNs.TabIndex = 1;
+            this.cmdGenerateOnlySPsFNs.Text = "Generate SPs/FNs for All Entities";
+            this.cmdGenerateOnlySPsFNs.Click += new System.EventHandler(this.cmdGenerateAllSPsFNs_Click);
+            // 
             // cmdPreView
             // 
-            this.cmdPreView.Location = new System.Drawing.Point(12, 9);
+            this.cmdPreView.Location = new System.Drawing.Point(716, 9);
             this.cmdPreView.Name = "cmdPreView";
             this.cmdPreView.Size = new System.Drawing.Size(90, 27);
             this.cmdPreView.TabIndex = 0;
             this.cmdPreView.Text = "PreView";
+            this.cmdPreView.Visible = false;
             this.cmdPreView.Click += new System.EventHandler(this.cmdVisualizar_Click);
+            // 
+            // cmdGenerateAllFiles
+            // 
+            this.cmdGenerateAllFiles.Location = new System.Drawing.Point(12, 9);
+            this.cmdGenerateAllFiles.Name = "cmdGenerateAllFiles";
+            this.cmdGenerateAllFiles.Size = new System.Drawing.Size(233, 27);
+            this.cmdGenerateAllFiles.TabIndex = 0;
+            this.cmdGenerateAllFiles.Text = "Generate Files for All Entities";
+            this.cmdGenerateAllFiles.Click += new System.EventHandler(this.cmdGenerateAllFiles_Click);
             // 
             // cmdGenerateFiles
             // 
-            this.cmdGenerateFiles.Location = new System.Drawing.Point(118, 9);
+            this.cmdGenerateFiles.Location = new System.Drawing.Point(812, 9);
             this.cmdGenerateFiles.Name = "cmdGenerateFiles";
-            this.cmdGenerateFiles.Size = new System.Drawing.Size(105, 27);
+            this.cmdGenerateFiles.Size = new System.Drawing.Size(246, 27);
             this.cmdGenerateFiles.TabIndex = 0;
-            this.cmdGenerateFiles.Text = "Generate Files";
-            this.cmdGenerateFiles.Click += new System.EventHandler(this.cmdGerarArquivos_Click);
+            this.cmdGenerateFiles.Text = "Generate Files for Selected Entities";
+            this.cmdGenerateFiles.Click += new System.EventHandler(this.cmdGenerateOnlySelected_Click);
             // 
             // tabcPassos
             // 
             this.tabcPassos.Controls.Add(this.tabpExplorer);
-            this.tabcPassos.Controls.Add(this.tabpObjetos);
-            this.tabcPassos.Controls.Add(this.tabpOpcoes);
+            this.tabcPassos.Controls.Add(this.tabpObjects);
+            this.tabcPassos.Controls.Add(this.tabpOptions);
             this.tabcPassos.Controls.Add(this.tabpProcedures);
             this.tabcPassos.Controls.Add(this.tabpPreview);
             this.tabcPassos.Controls.Add(this.tabpAppConfiguration);
@@ -343,35 +362,36 @@ namespace Procwork.CodeGenerator
             // 
             // pnlCampos
             // 
-            this.pnlCampos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.pnlCampos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlCampos.BackColor = System.Drawing.Color.Silver;
             this.pnlCampos.Controls.Add(this.trvTabelasSel);
-            this.pnlCampos.Location = new System.Drawing.Point(403, 0);
+            this.pnlCampos.Location = new System.Drawing.Point(554, 0);
             this.pnlCampos.Name = "pnlCampos";
-            this.pnlCampos.Size = new System.Drawing.Size(660, 448);
+            this.pnlCampos.Size = new System.Drawing.Size(509, 448);
             this.pnlCampos.TabIndex = 7;
             // 
             // trvTabelasSel
             // 
-            this.trvTabelasSel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.trvTabelasSel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.trvTabelasSel.ImageIndex = 0;
             this.trvTabelasSel.ImageList = this.imageList1;
             this.trvTabelasSel.Location = new System.Drawing.Point(10, 7);
             this.trvTabelasSel.Name = "trvTabelasSel";
             this.trvTabelasSel.SelectedImageIndex = 0;
-            this.trvTabelasSel.Size = new System.Drawing.Size(641, 434);
+            this.trvTabelasSel.Size = new System.Drawing.Size(490, 434);
             this.trvTabelasSel.TabIndex = 10;
+            this.trvTabelasSel.DoubleClick += new System.EventHandler(this.trvTabelasSel_DoubleClick);
             // 
             // pnlBotoesMovimentacao
             // 
             this.pnlBotoesMovimentacao.Controls.Add(this.cmdIncluirNodes);
             this.pnlBotoesMovimentacao.Controls.Add(this.cmdExcluirNodes);
             this.pnlBotoesMovimentacao.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlBotoesMovimentacao.Location = new System.Drawing.Point(346, 0);
+            this.pnlBotoesMovimentacao.Location = new System.Drawing.Point(491, 0);
             this.pnlBotoesMovimentacao.Name = "pnlBotoesMovimentacao";
             this.pnlBotoesMovimentacao.Size = new System.Drawing.Size(57, 457);
             this.pnlBotoesMovimentacao.TabIndex = 9;
@@ -401,31 +421,32 @@ namespace Procwork.CodeGenerator
             this.pnlBancoDados.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlBancoDados.Location = new System.Drawing.Point(0, 0);
             this.pnlBancoDados.Name = "pnlBancoDados";
-            this.pnlBancoDados.Size = new System.Drawing.Size(346, 457);
+            this.pnlBancoDados.Size = new System.Drawing.Size(491, 457);
             this.pnlBancoDados.TabIndex = 8;
             // 
             // trvTabelas
             // 
-            this.trvTabelas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.trvTabelas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.trvTabelas.ImageIndex = 0;
             this.trvTabelas.ImageList = this.imageList1;
             this.trvTabelas.Location = new System.Drawing.Point(10, 9);
             this.trvTabelas.Name = "trvTabelas";
             this.trvTabelas.SelectedImageIndex = 0;
-            this.trvTabelas.Size = new System.Drawing.Size(326, 434);
+            this.trvTabelas.Size = new System.Drawing.Size(471, 434);
             this.trvTabelas.TabIndex = 4;
+            this.trvTabelas.DoubleClick += new System.EventHandler(this.trvTabelas_DoubleClick);
             // 
-            // tabpObjetos
+            // tabpObjects
             // 
-            this.tabpObjetos.Controls.Add(this.pnlObjetos);
-            this.tabpObjetos.Location = new System.Drawing.Point(4, 25);
-            this.tabpObjetos.Name = "tabpObjetos";
-            this.tabpObjetos.Size = new System.Drawing.Size(1065, 457);
-            this.tabpObjetos.TabIndex = 2;
-            this.tabpObjetos.Tag = "Check os objetos que deseja Gerar";
-            this.tabpObjetos.Text = "Objetos";
+            this.tabpObjects.Controls.Add(this.pnlObjetos);
+            this.tabpObjects.Location = new System.Drawing.Point(4, 25);
+            this.tabpObjects.Name = "tabpObjects";
+            this.tabpObjects.Size = new System.Drawing.Size(1065, 457);
+            this.tabpObjects.TabIndex = 2;
+            this.tabpObjects.Tag = "Check os objetos que deseja Gerar";
+            this.tabpObjects.Text = "Objetos";
             // 
             // pnlObjetos
             // 
@@ -700,15 +721,15 @@ namespace Procwork.CodeGenerator
             this.chkBC.Text = "Gerar Arquivo BC";
             this.chkBC.CheckedChanged += new System.EventHandler(this.chkBC_CheckedChanged);
             // 
-            // tabpOpcoes
+            // tabpOptions
             // 
-            this.tabpOpcoes.Controls.Add(this.pnlCommands);
-            this.tabpOpcoes.Location = new System.Drawing.Point(4, 25);
-            this.tabpOpcoes.Name = "tabpOpcoes";
-            this.tabpOpcoes.Size = new System.Drawing.Size(1065, 457);
-            this.tabpOpcoes.TabIndex = 1;
-            this.tabpOpcoes.Tag = "Check os itens que deseja Gerar para cada um dos objetos";
-            this.tabpOpcoes.Text = "Opções de Objetos";
+            this.tabpOptions.Controls.Add(this.pnlCommands);
+            this.tabpOptions.Location = new System.Drawing.Point(4, 25);
+            this.tabpOptions.Name = "tabpOptions";
+            this.tabpOptions.Size = new System.Drawing.Size(1065, 457);
+            this.tabpOptions.TabIndex = 1;
+            this.tabpOptions.Tag = "Check os itens que deseja Gerar para cada um dos objetos";
+            this.tabpOptions.Text = "Opções de Objetos";
             // 
             // pnlCommands
             // 
@@ -856,8 +877,8 @@ namespace Procwork.CodeGenerator
             // tabcProcedures
             // 
             this.tabcProcedures.Alignment = System.Windows.Forms.TabAlignment.Left;
-            this.tabcProcedures.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.tabcProcedures.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabcProcedures.Controls.Add(this.tabpSelect);
             this.tabcProcedures.Controls.Add(this.tabpInsert);
@@ -881,8 +902,8 @@ namespace Procwork.CodeGenerator
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.DarkGray;
             this.panel2.Controls.Add(this.trvSelect);
@@ -893,8 +914,8 @@ namespace Procwork.CodeGenerator
             // 
             // trvSelect
             // 
-            this.trvSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.trvSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.trvSelect.ImageIndex = 0;
             this.trvSelect.ImageList = this.imageList1;
@@ -915,8 +936,8 @@ namespace Procwork.CodeGenerator
             // 
             // panel3
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.DarkGray;
             this.panel3.Controls.Add(this.trvInsert);
@@ -927,8 +948,8 @@ namespace Procwork.CodeGenerator
             // 
             // trvInsert
             // 
-            this.trvInsert.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.trvInsert.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.trvInsert.ImageIndex = 0;
             this.trvInsert.ImageList = this.imageList1;
@@ -949,8 +970,8 @@ namespace Procwork.CodeGenerator
             // 
             // panel4
             // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.Color.DarkGray;
             this.panel4.Controls.Add(this.trvUpdate);
@@ -961,8 +982,8 @@ namespace Procwork.CodeGenerator
             // 
             // trvUpdate
             // 
-            this.trvUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.trvUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.trvUpdate.ImageIndex = 0;
             this.trvUpdate.ImageList = this.imageList1;
@@ -983,8 +1004,8 @@ namespace Procwork.CodeGenerator
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.DarkGray;
             this.panel1.Controls.Add(this.trvDelete);
@@ -995,8 +1016,8 @@ namespace Procwork.CodeGenerator
             // 
             // trvDelete
             // 
-            this.trvDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.trvDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.trvDelete.ImageIndex = 0;
             this.trvDelete.ImageList = this.imageList1;
@@ -1046,8 +1067,8 @@ namespace Procwork.CodeGenerator
             // 
             // trvProcedures
             // 
-            this.trvProcedures.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.trvProcedures.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.trvProcedures.ImageIndex = 0;
             this.trvProcedures.ImageList = this.imageList1;
@@ -1178,24 +1199,6 @@ namespace Procwork.CodeGenerator
             this.lblMensagem.Text = "Favor selecionar a Tabela ou View que deseja utilizar para geraração dos Objetos." +
     "";
             // 
-            // cmdGenerateAllFiles
-            // 
-            this.cmdGenerateAllFiles.Location = new System.Drawing.Point(229, 9);
-            this.cmdGenerateAllFiles.Name = "cmdGenerateAllFiles";
-            this.cmdGenerateAllFiles.Size = new System.Drawing.Size(255, 27);
-            this.cmdGenerateAllFiles.TabIndex = 0;
-            this.cmdGenerateAllFiles.Text = "Generate All Files / All Entities";
-            this.cmdGenerateAllFiles.Click += new System.EventHandler(this.cmdGenerateAllFiles_Click);
-            // 
-            // cmdGenerateOnlySPsFNs
-            // 
-            this.cmdGenerateOnlySPsFNs.Location = new System.Drawing.Point(490, 9);
-            this.cmdGenerateOnlySPsFNs.Name = "cmdGenerateOnlySPsFNs";
-            this.cmdGenerateOnlySPsFNs.Size = new System.Drawing.Size(255, 27);
-            this.cmdGenerateOnlySPsFNs.TabIndex = 1;
-            this.cmdGenerateOnlySPsFNs.Text = "Generate Only SPs/FNs";
-            this.cmdGenerateOnlySPsFNs.Click += new System.EventHandler(this.cmdGenerateOnlySPsFNs_Click);
-            // 
             // frmPrincipal
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(6, 15);
@@ -1213,7 +1216,7 @@ namespace Procwork.CodeGenerator
             this.pnlCampos.ResumeLayout(false);
             this.pnlBotoesMovimentacao.ResumeLayout(false);
             this.pnlBancoDados.ResumeLayout(false);
-            this.tabpObjetos.ResumeLayout(false);
+            this.tabpObjects.ResumeLayout(false);
             this.pnlObjetos.ResumeLayout(false);
             this.grpDomains.ResumeLayout(false);
             this.grpApplication.ResumeLayout(false);
@@ -1222,7 +1225,7 @@ namespace Procwork.CodeGenerator
             this.grpDataBase.ResumeLayout(false);
             this.grpWebApi.ResumeLayout(false);
             this.grpWebApi.PerformLayout();
-            this.tabpOpcoes.ResumeLayout(false);
+            this.tabpOptions.ResumeLayout(false);
             this.pnlCommands.ResumeLayout(false);
             this.grpBC.ResumeLayout(false);
             this.grpMapper.ResumeLayout(false);
@@ -1269,13 +1272,25 @@ namespace Procwork.CodeGenerator
             this.txtAutoMapperAppendTag.Text = CustomConfiguration.ApplicationConfig.AutoMapper.AppendTag;
             this.txtDIAppendTag.Text = CustomConfiguration.WebApiConfig.DependencyInjection.AppendTag;
 
-            CarregarTreeView();
+            HideUnusedTabs();
+
+            LoadDBObjects();
 
             //CarregarTreeViewProcedures();
 
         }
 
-        private void CarregarTreeView()
+        private void HideUnusedTabs()
+        {
+
+            tabcPassos.TabPages.RemoveByKey("tabpObjects");
+            tabcPassos.TabPages.RemoveByKey("tabpOptions");
+            tabcPassos.TabPages.RemoveByKey("tabpProcedures");
+            tabcPassos.TabPages.RemoveByKey("tabpPreview");
+
+        }
+
+        private void LoadDBObjects()
         {
 
             NpgsqlConnection conn = dataAccess.GetConnection(dataAccess.GetConnectionString());
@@ -1297,7 +1312,7 @@ namespace Procwork.CodeGenerator
                 NoPai.ImageIndex = 1;
                 NoPai.SelectedImageIndex = 1;
                 NoPai.Text = Convert.ToString(dttGlobalName.Rows[0][0]);
-                NoPai.Tag = NoPai.Text;
+                NoPai.Tag = "dbinstance";
 
                 trvTabelas.Nodes.Add(NoPai);
 
@@ -1529,146 +1544,87 @@ order by procedure_name,
         {
             // add selected items from treeview to the listview on the right hand side
             //Add Parent Node First
+            if (trvTabelas.SelectedNode == null)
+                return;
 
             TreeNode n1 = (TreeNode)trvTabelas.SelectedNode.Clone();
             trvTabelasSel.Nodes.Add(n1);
 
-            //this.txtDomain.Text = n1.Text.Replace("|","");
-
-            //TreeNode parentNode = (TreeNode)trvTabelas.SelectedNode.Parent.Clone();
-            //TreeNode n1 = (TreeNode)trvTabelas.SelectedNode.Clone();
-
-            //if (parentNode != null && !trvTabelasSel.Nodes.Contains(parentNode))
-            //    trvTabelasSel.Nodes.Add(parentNode);
-
-            //parentNode.Nodes.Add(n1);
-
-            //trvTabelasSel.Nodes.Add(parentNode.Clone());
         }
 
         private void cmdExcluirNodes_Click(object sender, System.EventArgs e)
         {
+            if (trvTabelasSel.SelectedNode == null)
+                return;
+
             trvTabelasSel.Nodes.Remove(trvTabelasSel.SelectedNode);
         }
 
-        private void cmdGerarArquivos_Click(object sender, System.EventArgs e)
-        {
-            if (this.txtNamespace.Text == "")
-            {
-                MessageBox.Show("Obrigatório digitar um Namespace");
-                this.txtNamespace.Focus();
-            }
-            else if (this.txtBasePath.Text == "")
-            {
-                MessageBox.Show("Obrigatório digitar um caminho de Saída para geração do Arquivo");
-                this.txtBasePath.Focus();
-            }
-            else if (!System.IO.Directory.Exists(this.txtBasePath.Text) && !CustomConfiguration.SolutionConfig.ForceCreateFolder)
-            {
-                MessageBox.Show("Caminho de Sáida Inválido ou Inexistênte");
-                this.txtBasePath.Focus();
-            }
-            else
-            {
-                this.Arquivo();
-            }
+        //private string GenerateFile()
+        //{
+        //    return this.GenerateFile(true, false, false);
+        //}
 
-        }
+        //private string GenerateFile(bool generateSelected, bool generateAll, bool generateOnlySPsFNs)
+        //{
 
-        private string Arquivo()
-        {
-            return this.Arquivo(false);
-        }
+        //    string strResult = string.Empty;
 
-        private string Arquivo(bool visualizar_)
-        {
+        //    if (this.trvTabelasSel.Nodes.Count == 0)
+        //    {
+        //        MessageBox.Show("Selecione uma tabela ou view");
+        //    }
+        //    else
+        //    {
+        //        try
+        //        {
 
-            StringBuilder strRetorno = new StringBuilder();
+        //            // --------- PARAMETROS DE SAIDA DO ARQUIVO  ------------
 
-            if (this.trvTabelasSel.Nodes.Count == 0)
-            {
-                MessageBox.Show("Selecione uma tabela ou view");
-            }
-            else
-            {
-                // --------- PARAMETROS DE SAIDA DO ARQUIVO  ------------
+        //            StringBuilder sbReturn = new StringBuilder();
 
-                StringBuilder sbReturn = new StringBuilder();
+        //            //Using Nodes will be created the files for all selected nodes
+        //            //this.trvTabelasSel.Nodes
+        //            TreeNodeCollection nodes = null;
 
-                //Using Nodes will be created the files for all selected nodes
-                //this.trvTabelasSel.Nodes
-                foreach(TreeNode node in this.trvTabelasSel.Nodes)
-                {
-                    FileGeneratorHelper fileGenerator = new FileGeneratorHelper(node);
-                    if (visualizar_)
-                    {
-                        sbReturn.AppendLine(fileGenerator.MergeAllAssets().ToString());
-                    }
-                    else
-                    {
-                        fileGenerator.SaveAllAssets();
-                    }
+        //            if (generateSelected)
+        //            {
+        //                if (!trvTabelasSel.Nodes[0].Tag.ToString().Equals("dbinstance"))
+        //                    nodes = trvTabelasSel.Nodes;
+        //            }
 
-                }
+        //            if (generateAll)
+        //            {
+        //                nodes = trvTabelas.Nodes[0].Nodes;
+        //                this.GenerateAllFiles();
+        //            }
 
-                // -----------------------------------------------
-                // Chama método para criação dos Arquivos
-                // -----------------------------------------------
+        //            if (generateOnlySPsFNs)
+        //            {
+        //                nodes = trvTabelas.Nodes[0].Nodes;
+        //                this.GenerateSPsFNs();
+        //            }
 
-                ////***************************************************
-                //// Generate all Domain Files
-                //if (this.chkDomainModel.Checked)
-                //{
-
-                //    if (visualizar_)
-                //    {
-                //        strRetorno = fileGenerator.MergeTemplateDomain();
-
-                //    }
-                //    else
-                //    {
-                //        fileGenerator.SaveMergedTemplateDomain();
-                //    }
-
-                //}
+        //            if (generateSelected)
+        //            {
+        //                strResult = this.GenerateSelectedEntities();
+        //            }
 
 
-                ////***************************************************
-                //// Generate all Data Files
-                //if (this.chkDomainModel.Checked)
-                //{
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            strResult = ex.Message;
+        //        }
+        //    }
+        //    return strResult;
 
-                //    if (visualizar_)
-                //    {
-                //        strRetorno = fileGenerator.MergeTemplateData();
-
-                //    }
-                //    else
-                //    {
-                //        fileGenerator.SaveMergedTemplateData();
-                //    }
-
-                //}
-
-                ////***************************************************
-                //// Generate all Application Files
-                //if (this.chkDomainModel.Checked)
-                //{
-                //    if (visualizar_)
-                //        strRetorno = fileGenerator.MergeTemplateApplication();
-                //    else
-                //        fileGenerator.SaveMergedTemplateApplication();
-                //}
-
-            }
-            return strRetorno.ToString();
-
-        }
+        //}
 
         private void cmdVisualizar_Click(object sender, System.EventArgs e)
         {
-            this.tabcPassos.TabIndex = 3;
-            this.txtPreview.Text = this.Arquivo(true);
+            //this.tabcPassos.TabIndex = 3;
+            //this.txtPreview.Text = this.GenerateFile(true, false,false);
         }
 
         private void mnuItemCopiar_Click(object sender, System.EventArgs e)
@@ -1760,30 +1716,144 @@ order by procedure_name,
             this.tabcProcedures.Enabled = this.chkMapper.Checked;
         }
 
+        public bool BasicValidation()
+        {
+            bool blnReturn = true;
+
+            if (this.txtNamespace.Text == "")
+            {
+                MessageBox.Show("Obrigatório digitar um Namespace");
+                this.txtNamespace.Focus();
+                blnReturn = false;
+            }
+
+            if (this.txtBasePath.Text == "")
+            {
+                MessageBox.Show("Obrigatório digitar um caminho de Saída para geração do Arquivo");
+                this.txtBasePath.Focus();
+                blnReturn = false;
+            }
+
+            if (!System.IO.Directory.Exists(this.txtBasePath.Text) && !CustomConfiguration.SolutionConfig.ForceCreateFolder)
+            {
+                MessageBox.Show("Caminho de Sáida Inválido ou Inexistênte");
+                this.txtBasePath.Focus();
+                blnReturn = false;
+            }
+
+            if (this.trvTabelas.Nodes.Count == 0)
+            {
+                MessageBox.Show("Need to have nodes to continue");
+                blnReturn = false;
+            }
+            return blnReturn;
+        }
+
+        private void cmdGenerateOnlySelected_Click(object sender, System.EventArgs e)
+        {
+            if (BasicValidation())
+                MessageBox.Show(this.GenerateOnlySelected());
+        }
+
+        private void cmdGenerateAllSPsFNs_Click(object sender, EventArgs e)
+        {
+            if (BasicValidation())
+                MessageBox.Show(this.GenerateAllSPsFNs());
+        }
+
         private void cmdGenerateAllFiles_Click(object sender, EventArgs e)
         {
-            StringBuilder sbReturn = new StringBuilder();
-
-            //Using Nodes will be created the files for all selected nodes
-            //this.trvTabelasSel.Nodes
-            foreach (TreeNode node in this.trvTabelas.Nodes[0].Nodes)
-            {
-                FileGeneratorHelper fileGenerator = new FileGeneratorHelper(node);
-                fileGenerator.SaveAllAssets();
-            }
+            if (BasicValidation())
+                MessageBox.Show(this.GenerateAllFiles());
         }
 
-        private void cmdGenerateOnlySPsFNs_Click(object sender, EventArgs e)
+        public string GenerateAllFiles()
         {
-            StringBuilder sbReturn = new StringBuilder();
-
-            //Using Nodes will be created the files for all selected nodes
-            //this.trvTabelasSel.Nodes
-            foreach (TreeNode node in this.trvTabelas.Nodes[0].Nodes)
+            string strResult;
+            try
             {
-                FileGeneratorHelper fileGenerator = new FileGeneratorHelper(node);
-                fileGenerator.SaveMergedTemplateDataBase();
+                foreach (TreeNode node in this.trvTabelas.Nodes[0].Nodes)
+                {
+                    FileGeneratorHelper fileGenerator = new FileGeneratorHelper(node);
+                    fileGenerator.SaveAllAssets();
+                }
+                strResult = "Files created";
             }
+            catch (Exception ex)
+            {
+                strResult = ex.Message;
+            }
+            return strResult;
         }
+
+
+        public string GenerateAllSPsFNs()
+        {
+            string strResult;
+            try
+            {
+                foreach (TreeNode node in this.trvTabelas.Nodes[0].Nodes)
+                {
+                    FileGeneratorHelper fileGenerator = new FileGeneratorHelper(node);
+                    fileGenerator.SaveMergedTemplateDataBase();
+                }
+
+                strResult = "Files created";
+            }
+            catch (Exception ex)
+            {
+                strResult = ex.Message;
+            }
+            return strResult;
+        }
+
+
+        private string GenerateOnlySelected()
+        {
+            
+            if (this.trvTabelasSel.Nodes.Count == 0)
+                return "Required select a View or a Table";
+
+            string strResult = string.Empty;
+            try
+            {
+                TreeNodeCollection nodes = null;
+                if (trvTabelasSel.Nodes[0].Tag.ToString().Equals("dbinstance"))
+                    nodes = trvTabelasSel.Nodes[0].Nodes;
+                else
+                    nodes = trvTabelasSel.Nodes;
+
+                //Using Nodes will be created the files for all selected nodes
+                //this.trvTabelasSel.Nodes
+                foreach (TreeNode node in nodes)
+                {
+                    FileGeneratorHelper fileGenerator = new FileGeneratorHelper(node);
+                    fileGenerator.SaveAllAssets();
+                }
+
+                strResult = "Files created";
+
+
+            }
+            catch (Exception ex)
+            {
+                strResult = ex.Message;
+            }
+
+            return strResult;
+
+        }
+
+        private void trvTabelas_DoubleClick(object sender, EventArgs e)
+        {
+            cmdIncluirNodes_Click(sender, e);
+        }
+
+        private void trvTabelasSel_DoubleClick(object sender, EventArgs e)
+        {
+            cmdExcluirNodes_Click(sender, e);
+        }
+
     }
+
 }

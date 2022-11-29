@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Text;
 
-namespace Procwork.CodeGenerator.TemplateHelper.Base
+namespace ProductivityTools.CodeGenerator.TemplateHelper.Base
 {
-    public interface IFileGenerator 
+    public interface IFileGenerator
     {
         StringBuilder MergeTemplate();
         bool SaveToFile();

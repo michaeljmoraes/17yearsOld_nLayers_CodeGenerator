@@ -8,7 +8,7 @@ using Carrefour.C4A.PersistenceFunctions;
 using Carrefour.C4A.PersistableObjectManager;
 using System.Collections;
 
-namespace procwork 
+namespace ProductivityTools 
 {
 	/// <summary>
 	/// B_PROJTOMapper

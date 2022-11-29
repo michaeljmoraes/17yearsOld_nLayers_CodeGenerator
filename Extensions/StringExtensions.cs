@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Procwork.CodeGenerator.Extensions
+﻿namespace ProductivityTools.CodeGenerator.Extensions
 {
     //public static class StringExtension
     //{
@@ -56,7 +49,7 @@ namespace Procwork.CodeGenerator.Extensions
         {
             string strReturn = "";
             if (str == null) return "";
-            switch(str)
+            switch (str)
             {
                 case "bigint":
                     strReturn = "Int64";
@@ -137,21 +130,13 @@ namespace Procwork.CodeGenerator.Extensions
 
         public static string FormatToDomainParameter(this string str)
         {
-            if (!string.IsNullOrEmpty(str) && str.Length > 1)
-            {
-                return char.ToLower(str[0]) + str.Substring(1);
-            }
-            return str.ToLowerInvariant();
+            return !string.IsNullOrEmpty(str) && str.Length > 1 ? char.ToLower(str[0]) + str.Substring(1) : str.ToLowerInvariant();
         }
 
 
         public static string FormatToFirstUpCamelCase(this string str)
         {
-            if (!string.IsNullOrEmpty(str) && str.Length > 1)
-            {
-                return char.ToUpperInvariant(str[0]) + str.Substring(1);
-            }
-            return str.ToLowerInvariant();
+            return !string.IsNullOrEmpty(str) && str.Length > 1 ? char.ToUpperInvariant(str[0]) + str.Substring(1) : str.ToLowerInvariant();
         }
 
 

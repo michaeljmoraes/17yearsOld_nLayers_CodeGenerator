@@ -1,39 +1,29 @@
+using ProductivityTools.CodeGenerator.Extensions;
+using ProductivityTools.CodeGenerator.TemplateHelper.Base;
 using System;
-using System.CodeDom;
-using System.CodeDom.Compiler;
-using Microsoft.CSharp;
-using System.IO;
-using System.Reflection;
-using System.Collections;
 using System.Text;
-using System.Windows.Forms.ComponentModel;
 using System.Windows.Forms;
-using System.Runtime.Serialization;
-using System.Data;
-using Procwork.CodeGenerator.Extensions;
-using Procwork.CodeGenerator.TemplateHelper.Base;
-using NpgsqlTypes;
 
-namespace Procwork.CodeGenerator.Classes
+namespace ProductivityTools.CodeGenerator.Classes
 {
 
     public class DataBaseStoredProceduresGenerator : FileGeneratorBase, IFileGenerator
     {
 
-        string DomainModel { get { return "{DomainModel}"; } }
-        string DomainModelSP { get { return "{entity_domain}"; } }
+        string DomainModel => "{DomainModel}";
+        string DomainModelSP => "{entity_domain}";
 
-        string InsertParameters { get { return "{insert_parameters}"; } }
-        string InsertFields { get { return "{insert_fields}"; } }
-        string InsertValues { get { return "{insert_values}"; } }
+        string InsertParameters => "{insert_parameters}";
+        string InsertFields => "{insert_fields}";
+        string InsertValues => "{insert_values}";
 
-        string UpdateParameters { get { return "{update_parameters}"; } }
-        string UpdateValues { get { return "{update_values}"; } }
-
-
+        string UpdateParameters => "{update_parameters}";
+        string UpdateValues => "{update_values}";
 
 
-        public DataBaseStoredProceduresGenerator(TreeNode nodeCollection)  : base(nodeCollection)
+
+
+        public DataBaseStoredProceduresGenerator(TreeNode nodeCollection) : base(nodeCollection)
         {
             base.TemplateFilePath = $"{CustomConfiguration.SolutionConfig.TemplateBasePath}" +
                 $"{CustomConfiguration.DataBaseConfig.StoredProcedures.TemplateFile}";
@@ -75,13 +65,16 @@ namespace Procwork.CodeGenerator.Classes
             }
         }
 
-        public override bool SaveToFile() => base.SaveToFile();
+        public override bool SaveToFile()
+        {
+            return base.SaveToFile();
+        }
 
         #region Assets Merge
 
         private StringBuilder MergeDomainModel(StringBuilder partialMergeFile, string domainName)
         {
-            partialMergeFile.Replace(this.DomainModel,Domain.ToLower());
+            partialMergeFile.Replace(this.DomainModel, Domain.ToLower());
             return partialMergeFile;
         }
 
@@ -101,8 +94,8 @@ namespace Procwork.CodeGenerator.Classes
                 if (node.Text.FormatToCamelCaseRemoveUnderline().Equals(CustomConfiguration.DomainConfig.Models.PrimaryKey)) continue;
                 if (node.Text.FormatToCamelCaseRemoveUnderline().Equals(CustomConfiguration.DomainConfig.Models.TimeStampUpdate)) continue;
                 if (node.Text.FormatToCamelCaseRemoveUnderline().Equals(CustomConfiguration.DomainConfig.Models.TimeStampInsert)) continue;
-                
-                if(node.Tag.ToString().FormatToSPParameterType().Equals("VARCHAR"))
+
+                if (node.Tag.ToString().FormatToSPParameterType().Equals("VARCHAR"))
                     sbProperties.AppendLine($"_{node.Text} {node.Tag.ToString().FormatToSPParameterType()}({node.ToolTipText}),");
                 else
                     sbProperties.AppendLine($"_{node.Text} {node.Tag.ToString().FormatToSPParameterType()},");
@@ -120,10 +113,10 @@ namespace Procwork.CodeGenerator.Classes
                 if (node.Text.FormatToCamelCaseRemoveUnderline().Equals(CustomConfiguration.DomainConfig.Models.PrimaryKey)) continue;
                 if (node.Text.FormatToCamelCaseRemoveUnderline().Equals(CustomConfiguration.DomainConfig.Models.TimeStampUpdate)) continue;
                 if (node.Text.FormatToCamelCaseRemoveUnderline().Equals(CustomConfiguration.DomainConfig.Models.TimeStampInsert)) continue;
-                
+
                 sbProperties.AppendLine($"{node.Text},");
             }
-            
+
             return partialMergeFile.Replace(this.InsertFields, sbProperties.ToString());
         }
 
@@ -153,7 +146,7 @@ namespace Procwork.CodeGenerator.Classes
                 if (node.Text.FormatToCamelCaseRemoveUnderline().Equals(CustomConfiguration.DomainConfig.Models.PrimaryKey)) continue;
                 if (node.Text.FormatToCamelCaseRemoveUnderline().Equals(CustomConfiguration.DomainConfig.Models.TimeStampUpdate)) continue;
                 if (node.Text.FormatToCamelCaseRemoveUnderline().Equals(CustomConfiguration.DomainConfig.Models.TimeStampInsert)) continue;
-                
+
                 if (node.Tag.ToString().FormatToSPParameterType().Equals("VARCHAR"))
                     sbProperties.AppendLine($"_{node.Text} {node.Tag.ToString().FormatToSPParameterType()}({node.ToolTipText}),");
                 else

@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using System.Runtime.Serialization;
 using System.Data;
 
-namespace Procwork.CodeGenerator.Classes
+namespace ProductivityTools.CodeGenerator.Classes
 {
 
 	public class DomainModelGenerator: FileGenerator

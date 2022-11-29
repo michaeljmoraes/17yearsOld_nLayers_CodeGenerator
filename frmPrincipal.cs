@@ -1,18 +1,10 @@
-using System;
-using System.Drawing;
-using System.Collections;
-using System.ComponentModel;
-using System.Windows.Forms;
-using System.Data;
-using System.Data.OleDb;
-using Procwork.CodeGenerator.DataAccess;
-using Procwork.CodeGenerator.Formularios;
-using Procwork.CodeGenerator.Classes;
 using Npgsql;
-using System.Configuration;
-using System.Text;
+using ProductivityTools.CodeGenerator.Classes;
+using System;
+using System.Data;
+using System.Windows.Forms;
 
-namespace Procwork.CodeGenerator
+namespace ProductivityTools.CodeGenerator
 {
     /// <summary>
     /// Summary description for Form1.
@@ -362,9 +354,9 @@ namespace Procwork.CodeGenerator
             // 
             // pnlCampos
             // 
-            this.pnlCampos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.pnlCampos.Anchor = (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
+            | System.Windows.Forms.AnchorStyles.Right);
             this.pnlCampos.BackColor = System.Drawing.Color.Silver;
             this.pnlCampos.Controls.Add(this.trvTabelasSel);
             this.pnlCampos.Location = new System.Drawing.Point(554, 0);
@@ -374,9 +366,9 @@ namespace Procwork.CodeGenerator
             // 
             // trvTabelasSel
             // 
-            this.trvTabelasSel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.trvTabelasSel.Anchor = (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
+            | System.Windows.Forms.AnchorStyles.Right);
             this.trvTabelasSel.ImageIndex = 0;
             this.trvTabelasSel.ImageList = this.imageList1;
             this.trvTabelasSel.Location = new System.Drawing.Point(10, 7);
@@ -426,9 +418,9 @@ namespace Procwork.CodeGenerator
             // 
             // trvTabelas
             // 
-            this.trvTabelas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.trvTabelas.Anchor = (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
+            | System.Windows.Forms.AnchorStyles.Right);
             this.trvTabelas.ImageIndex = 0;
             this.trvTabelas.ImageList = this.imageList1;
             this.trvTabelas.Location = new System.Drawing.Point(10, 9);
@@ -877,9 +869,9 @@ namespace Procwork.CodeGenerator
             // tabcProcedures
             // 
             this.tabcProcedures.Alignment = System.Windows.Forms.TabAlignment.Left;
-            this.tabcProcedures.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.tabcProcedures.Anchor = (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
+            | System.Windows.Forms.AnchorStyles.Right);
             this.tabcProcedures.Controls.Add(this.tabpSelect);
             this.tabcProcedures.Controls.Add(this.tabpInsert);
             this.tabcProcedures.Controls.Add(this.tabpUpdate);
@@ -902,9 +894,9 @@ namespace Procwork.CodeGenerator
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.panel2.Anchor = (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
+            | System.Windows.Forms.AnchorStyles.Right);
             this.panel2.BackColor = System.Drawing.Color.DarkGray;
             this.panel2.Controls.Add(this.trvSelect);
             this.panel2.Location = new System.Drawing.Point(-2, 0);
@@ -914,9 +906,9 @@ namespace Procwork.CodeGenerator
             // 
             // trvSelect
             // 
-            this.trvSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.trvSelect.Anchor = (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
+            | System.Windows.Forms.AnchorStyles.Right);
             this.trvSelect.ImageIndex = 0;
             this.trvSelect.ImageList = this.imageList1;
             this.trvSelect.Location = new System.Drawing.Point(10, 9);
@@ -936,9 +928,9 @@ namespace Procwork.CodeGenerator
             // 
             // panel3
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.panel3.Anchor = (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
+            | System.Windows.Forms.AnchorStyles.Right);
             this.panel3.BackColor = System.Drawing.Color.DarkGray;
             this.panel3.Controls.Add(this.trvInsert);
             this.panel3.Location = new System.Drawing.Point(-2, 0);
@@ -948,9 +940,9 @@ namespace Procwork.CodeGenerator
             // 
             // trvInsert
             // 
-            this.trvInsert.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.trvInsert.Anchor = (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
+            | System.Windows.Forms.AnchorStyles.Right);
             this.trvInsert.ImageIndex = 0;
             this.trvInsert.ImageList = this.imageList1;
             this.trvInsert.Location = new System.Drawing.Point(10, 9);
@@ -970,9 +962,9 @@ namespace Procwork.CodeGenerator
             // 
             // panel4
             // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.panel4.Anchor = (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
+            | System.Windows.Forms.AnchorStyles.Right);
             this.panel4.BackColor = System.Drawing.Color.DarkGray;
             this.panel4.Controls.Add(this.trvUpdate);
             this.panel4.Location = new System.Drawing.Point(-2, 0);
@@ -982,9 +974,9 @@ namespace Procwork.CodeGenerator
             // 
             // trvUpdate
             // 
-            this.trvUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.trvUpdate.Anchor = (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
+            | System.Windows.Forms.AnchorStyles.Right);
             this.trvUpdate.ImageIndex = 0;
             this.trvUpdate.ImageList = this.imageList1;
             this.trvUpdate.Location = new System.Drawing.Point(10, 9);
@@ -1004,9 +996,9 @@ namespace Procwork.CodeGenerator
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.panel1.Anchor = (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
+            | System.Windows.Forms.AnchorStyles.Right);
             this.panel1.BackColor = System.Drawing.Color.DarkGray;
             this.panel1.Controls.Add(this.trvDelete);
             this.panel1.Location = new System.Drawing.Point(-2, 0);
@@ -1016,9 +1008,9 @@ namespace Procwork.CodeGenerator
             // 
             // trvDelete
             // 
-            this.trvDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.trvDelete.Anchor = (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
+            | System.Windows.Forms.AnchorStyles.Right);
             this.trvDelete.ImageIndex = 0;
             this.trvDelete.ImageList = this.imageList1;
             this.trvDelete.Location = new System.Drawing.Point(10, 9);
@@ -1067,9 +1059,9 @@ namespace Procwork.CodeGenerator
             // 
             // trvProcedures
             // 
-            this.trvProcedures.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.trvProcedures.Anchor = (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
+            | System.Windows.Forms.AnchorStyles.Right);
             this.trvProcedures.ImageIndex = 0;
             this.trvProcedures.ImageList = this.imageList1;
             this.trvProcedures.Location = new System.Drawing.Point(10, 9);
@@ -1298,7 +1290,6 @@ namespace Procwork.CodeGenerator
             {
                 DataTable dttGlobalName = new DataTable();
                 NpgsqlDataReader dtrUserTables;
-                NpgsqlDataReader dtrUserViews;
                 NpgsqlDataReader dtrUserTabColumns;
 
                 dttGlobalName = dataAccess.GetSelectCommand(conn, "select current_database FROM current_database()");
@@ -1810,18 +1801,14 @@ order by procedure_name,
 
         private string GenerateOnlySelected()
         {
-            
+
             if (this.trvTabelasSel.Nodes.Count == 0)
                 return "Required select a View or a Table";
 
             string strResult = string.Empty;
             try
             {
-                TreeNodeCollection nodes = null;
-                if (trvTabelasSel.Nodes[0].Tag.ToString().Equals("dbinstance"))
-                    nodes = trvTabelasSel.Nodes[0].Nodes;
-                else
-                    nodes = trvTabelasSel.Nodes;
+                TreeNodeCollection nodes = trvTabelasSel.Nodes[0].Tag.ToString().Equals("dbinstance") ? trvTabelasSel.Nodes[0].Nodes : trvTabelasSel.Nodes;
 
                 //Using Nodes will be created the files for all selected nodes
                 //this.trvTabelasSel.Nodes

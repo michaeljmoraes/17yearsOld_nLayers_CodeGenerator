@@ -1,33 +1,23 @@
+using ProductivityTools.CodeGenerator.Extensions;
+using ProductivityTools.CodeGenerator.TemplateHelper.Base;
 using System;
-using System.CodeDom;
-using System.CodeDom.Compiler;
-using Microsoft.CSharp;
-using System.IO;
-using System.Reflection;
-using System.Collections;
 using System.Text;
-using System.Windows.Forms.ComponentModel;
 using System.Windows.Forms;
-using System.Runtime.Serialization;
-using System.Data;
-using Procwork.CodeGenerator.Extensions;
-using Procwork.CodeGenerator.TemplateHelper.Base;
-using NpgsqlTypes;
 
-namespace Procwork.CodeGenerator.Classes
+namespace ProductivityTools.CodeGenerator.Classes
 {
 
     public class DataQueryRepostiroyGenerator : FileGeneratorBase, IFileGenerator
     {
 
-        string DomainModel { get { return "{DomainModel}"; } }
-        string SPDomain { get { return "{sp_domain}"; } }
-        string FNDomain { get { return "{fn_domain}"; } }
+        string DomainModel => "{DomainModel}";
+        string SPDomain => "{sp_domain}";
+        string FNDomain => "{fn_domain}";
 
-        string MapParameters { get { return "{map_parameters}"; } }
-        string MapsParameters { get { return "{maps_parameters}"; } }
+        string MapParameters => "{map_parameters}";
+        string MapsParameters => "{maps_parameters}";
 
-        public DataQueryRepostiroyGenerator(TreeNode nodeCollection)  : base(nodeCollection)
+        public DataQueryRepostiroyGenerator(TreeNode nodeCollection) : base(nodeCollection)
         {
             base.TemplateFilePath = $"{CustomConfiguration.SolutionConfig.TemplateBasePath}" +
                 $"{CustomConfiguration.DataConfig.RepositoryImplementation.QueryTemplateFile}";
@@ -66,7 +56,10 @@ namespace Procwork.CodeGenerator.Classes
             }
         }
 
-        public override bool SaveToFile() => base.SaveToFile();
+        public override bool SaveToFile()
+        {
+            return base.SaveToFile();
+        }
 
         #region Assets Merge
 

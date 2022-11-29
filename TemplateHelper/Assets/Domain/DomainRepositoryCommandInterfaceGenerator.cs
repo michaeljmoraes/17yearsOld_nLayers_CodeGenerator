@@ -1,33 +1,24 @@
+using ProductivityTools.CodeGenerator.Extensions;
+using ProductivityTools.CodeGenerator.TemplateHelper.Base;
 using System;
-using System.CodeDom;
-using System.CodeDom.Compiler;
-using Microsoft.CSharp;
-using System.IO;
-using System.Reflection;
-using System.Collections;
 using System.Text;
-using System.Windows.Forms.ComponentModel;
 using System.Windows.Forms;
-using System.Runtime.Serialization;
-using System.Data;
-using Procwork.CodeGenerator.Extensions;
-using Procwork.CodeGenerator.TemplateHelper.Base;
 
-namespace Procwork.CodeGenerator.Classes
+namespace ProductivityTools.CodeGenerator.Classes
 {
 
     public class DomainRepositoryCommandInterfaceGenerator : FileGeneratorBase, IFileGenerator
     {
-        string DomainModel { get { return "{DomainModel}"; } }
+        string DomainModel => "{DomainModel}";
 
-        public DomainRepositoryCommandInterfaceGenerator(TreeNode nodeCollection) : base(nodeCollection) 
+        public DomainRepositoryCommandInterfaceGenerator(TreeNode nodeCollection) : base(nodeCollection)
         {
 
             base.TemplateFilePath = $"{CustomConfiguration.SolutionConfig.TemplateBasePath}" +
                 $"{CustomConfiguration.DomainConfig.RepositoryInterfaces.CommandsTemplateFile}";
 
             base.TargetFile = $"{CustomConfiguration.SolutionConfig.TargetBasePath}" +
-                $"{CustomConfiguration.DomainConfig.RepositoryInterfaces.TargetPath.Replace(this.DomainModel,base.Domain)}" +
+                $"{CustomConfiguration.DomainConfig.RepositoryInterfaces.TargetPath.Replace(this.DomainModel, base.Domain)}" +
                 $"{CustomConfiguration.DomainConfig.RepositoryInterfaces.CommandsTargetFile.Replace(this.DomainModel, this.Domain)}";
 
             base.TargetPath = $"{CustomConfiguration.SolutionConfig.TargetBasePath}" +
@@ -54,8 +45,10 @@ namespace Procwork.CodeGenerator.Classes
             }
         }
 
-        public override bool SaveToFile() => base.SaveToFile();
-
+        public override bool SaveToFile()
+        {
+            return base.SaveToFile();
+        }
 
         public StringBuilder MergeDomainModel(StringBuilder partialMergeFile, string domainName)
         {

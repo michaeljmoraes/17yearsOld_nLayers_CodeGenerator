@@ -16,8 +16,8 @@
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
     <DelaySign>false</DelaySign>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Procwork.CodeGenerator</RootNamespace>
-    <StartupObject>Procwork.CodeGenerator.frmPrincipal</StartupObject>
+    <RootNamespace>ProductivityTools.CodeGenerator</RootNamespace>
+    <StartupObject>ProductivityTools.CodeGenerator.frmPrincipal</StartupObject>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>

@@ -1,32 +1,22 @@
+using ProductivityTools.CodeGenerator.Extensions;
+using ProductivityTools.CodeGenerator.TemplateHelper.Base;
 using System;
-using System.CodeDom;
-using System.CodeDom.Compiler;
-using Microsoft.CSharp;
-using System.IO;
-using System.Reflection;
-using System.Collections;
 using System.Text;
-using System.Windows.Forms.ComponentModel;
 using System.Windows.Forms;
-using System.Runtime.Serialization;
-using System.Data;
-using Procwork.CodeGenerator.Extensions;
-using Procwork.CodeGenerator.TemplateHelper.Base;
-using NpgsqlTypes;
 
-namespace Procwork.CodeGenerator.Classes
+namespace ProductivityTools.CodeGenerator.Classes
 {
 
     public class DataCommandsRepositoryGenerator : FileGeneratorBase, IFileGenerator
     {
 
-        string DomainModel { get { return "{DomainModel}"; } }
-        string SPDomain { get { return "{sp_domain}"; } }
-        string FNDomain { get { return "{fn_domain}"; } }
-        string InsertParameters { get { return "{InsertParameters}"; } }
-        string UpdateParameters { get { return "{UpdateParameters}"; } }
+        string DomainModel => "{DomainModel}";
+        string SPDomain => "{sp_domain}";
+        string FNDomain => "{fn_domain}";
+        string InsertParameters => "{InsertParameters}";
+        string UpdateParameters => "{UpdateParameters}";
 
-        public DataCommandsRepositoryGenerator(TreeNode nodeCollection)  : base(nodeCollection)
+        public DataCommandsRepositoryGenerator(TreeNode nodeCollection) : base(nodeCollection)
         {
             base.TemplateFilePath = $"{CustomConfiguration.SolutionConfig.TemplateBasePath}" +
                 $"{CustomConfiguration.DataConfig.RepositoryImplementation.CommandsTemplateFile}";
@@ -63,7 +53,10 @@ namespace Procwork.CodeGenerator.Classes
             }
         }
 
-        public override bool SaveToFile() => base.SaveToFile();
+        public override bool SaveToFile()
+        {
+            return base.SaveToFile();
+        }
 
         #region Assets Merge
 
@@ -78,7 +71,7 @@ namespace Procwork.CodeGenerator.Classes
             partialMergeFile.Replace(this.SPDomain, domainName.ToLower());
             return partialMergeFile;
         }
-        
+
         private StringBuilder MergeFNDomain(StringBuilder partialMergeFile, string domainName)
         {
             partialMergeFile.Replace(this.FNDomain, domainName.ToLower());

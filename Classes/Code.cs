@@ -1,83 +1,83 @@
-using System.IO;
+using Microsoft.CSharp;
 using System.CodeDom;
 using System.CodeDom.Compiler;
-using Microsoft.CSharp;
+using System.IO;
 
-namespace Procwork.CodeGenerator.Classes
+namespace ProductivityTools.CodeGenerator.Classes
 {
 
-	public class Code 
-	
-	{
+    public class Code
 
-		public string Name;
-		public CodeTypeDeclaration Type;
-		public CSharpCodeProvider Provider;
+    {
 
-		public Code()
-		{
-		}
+        public string Name;
+        public CodeTypeDeclaration Type;
+        public CSharpCodeProvider Provider;
 
-		public Code(string name_, CSharpCodeProvider provider_)
-		{
-			this.Name = name_;
-			this.Type = new CodeTypeDeclaration(name_);
-			this.Provider = provider_;
+        public Code()
+        {
+        }
 
-		}
-		
-		public string Generate()
-		{
-			ICodeGenerator generator = Provider.CreateGenerator();
-			string codeString = Generate(generator);
-			return codeString;
-		}
+        public Code(string name_, CSharpCodeProvider provider_)
+        {
+            this.Name = name_;
+            this.Type = new CodeTypeDeclaration(name_);
+            this.Provider = provider_;
 
-		public string Generate(ICodeGenerator generator_)
-		{
-			
-			MemoryStream stream = new MemoryStream();
+        }
 
-			StreamWriter writer = new StreamWriter(stream);
+        public string Generate()
+        {
+            ICodeGenerator generator = Provider.CreateGenerator();
+            string codeString = Generate(generator);
+            return codeString;
+        }
 
-			CodeCompileUnit unit = CreateCompileUnit();
+        public string Generate(ICodeGenerator generator_)
+        {
 
-			generator_.GenerateCodeFromCompileUnit(unit, writer, CreateOptions());
+            MemoryStream stream = new MemoryStream();
 
-			writer.Flush();
-			stream.Seek(0, SeekOrigin.Begin);
-			StreamReader reader = new StreamReader(stream);
-			string codeString = reader.ReadToEnd();
-			stream.Close();
+            StreamWriter writer = new StreamWriter(stream);
 
-			return codeString;
+            CodeCompileUnit unit = CreateCompileUnit();
 
-		}
+            generator_.GenerateCodeFromCompileUnit(unit, writer, CreateOptions());
 
-		public CodeCompileUnit CreateCompileUnit()
-		{
-			CodeCompileUnit unit = new CodeCompileUnit();
+            writer.Flush();
+            stream.Seek(0, SeekOrigin.Begin);
+            StreamReader reader = new StreamReader(stream);
+            string codeString = reader.ReadToEnd();
+            stream.Close();
 
-			unit.Namespaces.Add(CreateNamespace());
+            return codeString;
 
-			return unit;
+        }
 
-		}
+        public CodeCompileUnit CreateCompileUnit()
+        {
+            CodeCompileUnit unit = new CodeCompileUnit();
 
-		public CodeNamespace CreateNamespace()
-		{
-			CodeNamespace ns = new CodeNamespace();
-			ns.Name = "Procwork";
-			ns.Types.Add(Type);
-			return ns;
-		}
+            unit.Namespaces.Add(CreateNamespace());
 
-		public CodeGeneratorOptions CreateOptions()
-		{
-			CodeGeneratorOptions options = new CodeGeneratorOptions();
-			options.BracingStyle = "C";
-			return options;
-		}
+            return unit;
 
-	}
+        }
+
+        public CodeNamespace CreateNamespace()
+        {
+            CodeNamespace ns = new CodeNamespace();
+            ns.Name = "ProductivityTools";
+            ns.Types.Add(Type);
+            return ns;
+        }
+
+        public CodeGeneratorOptions CreateOptions()
+        {
+            CodeGeneratorOptions options = new CodeGeneratorOptions();
+            options.BracingStyle = "C";
+            return options;
+        }
+
+    }
 }

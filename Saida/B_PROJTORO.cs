@@ -10,7 +10,7 @@ using Carrefour.C4A.PersistenceFunctions;
 using Carrefour.C4A.PersistableObjectManager;
 using Carrefour.Entidade.Corporativo.Seguranca.ControleAcesso;
 
-namespace procwork
+namespace ProductivityTools
 {
 	/// <summary>
 	/// Summary description for B_PROJTORO

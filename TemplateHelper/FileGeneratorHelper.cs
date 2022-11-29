@@ -1,17 +1,8 @@
 using System;
-using System.CodeDom;
-using System.CodeDom.Compiler;
-using Microsoft.CSharp;
-using System.IO;
-using System.Reflection;
-using System.Collections;
 using System.Text;
 using System.Windows.Forms;
-using System.Data;
-using System.Data.OleDb;
-using System.Runtime.InteropServices.WindowsRuntime;
 
-namespace Procwork.CodeGenerator.Classes
+namespace ProductivityTools.CodeGenerator.Classes
 {
     /// <summary>
     /// Summary description for GeraArquivo.
@@ -173,7 +164,7 @@ namespace Procwork.CodeGenerator.Classes
                 blnOK = new AppViewModelGenerator(this.SelectedNode).SaveToFile();
                 blnOK = new AppDomainServiceInterfaceGenerator(this.SelectedNode).SaveToFile();
                 blnOK = new AppDomainServiceImplementationGenerator(this.SelectedNode).SaveToFile();
-                
+
                 blnOK = new AppAutoMapperViewToDomainModelGenerator(this.SelectedNode).SaveToFile();
                 blnOK = new AppAutoMapperDomainToViewModelGenerator(this.SelectedNode).SaveToFile();
 

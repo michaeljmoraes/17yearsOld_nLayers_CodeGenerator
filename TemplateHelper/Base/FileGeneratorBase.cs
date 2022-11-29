@@ -1,18 +1,11 @@
+using ProductivityTools.CodeGenerator.Extensions;
+using ProductivityTools.CodeGenerator.TemplateHelper.Base;
 using System;
-using System.CodeDom;
-using System.CodeDom.Compiler;
-using Microsoft.CSharp;
 using System.IO;
-using System.Reflection;
-using System.Collections;
 using System.Text;
 using System.Windows.Forms;
-using System.Data;
-using System.Data.OleDb;
-using Procwork.CodeGenerator.TemplateHelper.Base;
-using Procwork.CodeGenerator.Extensions;
 
-namespace Procwork.CodeGenerator.Classes
+namespace ProductivityTools.CodeGenerator.Classes
 {
     /// <summary>
     /// Summary description for GeraArquivo.
@@ -24,7 +17,7 @@ namespace Procwork.CodeGenerator.Classes
         public virtual TreeNode SelectedNode { get; set; }
         public virtual StringBuilder TemplateFileContent { get; set; } = new StringBuilder();
         public virtual string TemplateFilePath { get; set; } = String.Empty;
-        
+
         public virtual string TargetPath { get; set; } = String.Empty;
         public virtual string TargetFile { get; set; } = String.Empty;
 
@@ -113,7 +106,9 @@ namespace Procwork.CodeGenerator.Classes
         }
 
 
-        public virtual StringBuilder MergeTemplate() => throw new NotImplementedException();
-
+        public virtual StringBuilder MergeTemplate()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

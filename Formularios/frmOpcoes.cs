@@ -1,68 +1,63 @@
-using System;
-using System.Drawing;
-using System.Collections;
-using System.ComponentModel;
 using System.Windows.Forms;
-using System.IO;
 
-namespace Procwork.CodeGenerator.Formularios
+namespace ProductivityTools.CodeGenerator.Formularios
 {
-	/// <summary>
-	/// Summary description for frmOpcoes.
-	/// </summary>
-	public class frmOpcoes : System.Windows.Forms.Form
-	{
-		public System.Windows.Forms.CheckBox chkMapper;
-		public System.Windows.Forms.TextBox txtCaminhoSaida;
-		private System.Windows.Forms.Label lblCaminhoSaida;
-		private System.Windows.Forms.OpenFileDialog ofdCaminhoSaida;
-		private System.Windows.Forms.Button cmdValidar;
-		private System.Windows.Forms.Label lblClasse;
-		public System.Windows.Forms.TextBox txtClasse;
-		private System.Windows.Forms.Label lblNamespace;
-		public System.Windows.Forms.TextBox txtNamespace;
-		private System.Windows.Forms.Button cmdOK;
-		private System.Windows.Forms.Button cmdCancelar;
-		public System.Windows.Forms.CheckBox chkEO;
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
-		private System.ComponentModel.Container components = null;
+    /// <summary>
+    /// Summary description for frmOpcoes.
+    /// </summary>
+    public class frmOpcoes : System.Windows.Forms.Form
+    {
+        public System.Windows.Forms.CheckBox chkMapper;
+        public System.Windows.Forms.TextBox txtCaminhoSaida;
+        private System.Windows.Forms.Label lblCaminhoSaida;
+        private System.Windows.Forms.OpenFileDialog ofdCaminhoSaida;
+        private System.Windows.Forms.Button cmdValidar;
+        private System.Windows.Forms.Label lblClasse;
+        public System.Windows.Forms.TextBox txtClasse;
+        private System.Windows.Forms.Label lblNamespace;
+        public System.Windows.Forms.TextBox txtNamespace;
+        private System.Windows.Forms.Button cmdOK;
+        private System.Windows.Forms.Button cmdCancelar;
+        public System.Windows.Forms.CheckBox chkEO;
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.Container components = null;
 
-		public frmOpcoes()
-		{
-			//
-			// Required for Windows Form Designer support
-			//
-			InitializeComponent();
+        public frmOpcoes()
+        {
+            //
+            // Required for Windows Form Designer support
+            //
+            InitializeComponent();
 
-			//
-			// TODO: Add any constructor code after InitializeComponent call
-			//
-		}
+            //
+            // TODO: Add any constructor code after InitializeComponent call
+            //
+        }
 
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		protected override void Dispose( bool disposing )
-		{
-			if( disposing )
-			{
-				if(components != null)
-				{
-					components.Dispose();
-				}
-			}
-			base.Dispose( disposing );
-		}
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (components != null)
+                {
+                    components.Dispose();
+                }
+            }
+            base.Dispose(disposing);
+        }
 
-		#region Windows Form Designer generated code
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
+        #region Windows Form Designer generated code
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
             this.chkMapper = new System.Windows.Forms.CheckBox();
             this.txtCaminhoSaida = new System.Windows.Forms.TextBox();
             this.lblCaminhoSaida = new System.Windows.Forms.Label();
@@ -192,31 +187,31 @@ namespace Procwork.CodeGenerator.Formularios
             this.ResumeLayout(false);
             this.PerformLayout();
 
-		}
-		#endregion
+        }
+        #endregion
 
-		private void cmdValidar_Click(object sender, System.EventArgs e)
-		{
-			if(!System.IO.Directory.Exists(this.txtCaminhoSaida.Text))
-			{
-				MessageBox.Show("diretorio inexistente.");
-			}
-			
-		}
+        private void cmdValidar_Click(object sender, System.EventArgs e)
+        {
+            if (!System.IO.Directory.Exists(this.txtCaminhoSaida.Text))
+            {
+                MessageBox.Show("diretorio inexistente.");
+            }
 
-		private void cmdOK_Click(object sender, System.EventArgs e)
-		{
-			this.Close();
-		}
+        }
 
-		private void cmdCancelar_Click(object sender, System.EventArgs e)
-		{
-			this.Close();
-		}
+        private void cmdOK_Click(object sender, System.EventArgs e)
+        {
+            this.Close();
+        }
 
-		private void chkMapper_CheckedChanged(object sender, System.EventArgs e)
-		{
-		
-		}
-	}
+        private void cmdCancelar_Click(object sender, System.EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void chkMapper_CheckedChanged(object sender, System.EventArgs e)
+        {
+
+        }
+    }
 }
